@@ -9,8 +9,9 @@ async function main() {
   await mongoose.connection.syncIndexes();
 
   const app = createApp();
-  app.listen(config.port, () => {
-    console.log(`✓ السيرفر شغال على http://localhost:${config.port}`);
+   const port = process.env.PORT || config.port;
+  app.listen(Number(port), '0.0.0.0', () => {
+    console.log(`✓ السيرفر شغال على http://localhost:${port}`);
   });
 }
 
